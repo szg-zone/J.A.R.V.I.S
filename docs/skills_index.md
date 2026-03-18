@@ -22,7 +22,7 @@ Rule: If a skill file says to do something differently than the docs,
 
 ---
 
-## Skill Files & When to Read Them
+## JARVIS-SZG Core Skills (Project-Specific)
 
 ### `skills/agent.md`
 **Read before**: implementing or modifying the agent loop, tool calling, multi-agent orchestration
@@ -71,6 +71,94 @@ Rule: If a skill file says to do something differently than the docs,
 ### `skills/testing.md`
 **Read before**: writing or running acceptance tests
 **Covers**: manual test patterns, how to test streaming endpoints, WebSocket testing, SQLite inspection commands
+
+---
+
+## General Skills (Cross-Project)
+
+### Creative & Design
+
+### `skills/frontend-design`
+**Read before**: creating production-grade frontend interfaces and Web components
+**Covers**: component architecture, CSS patterns, accessibility, responsive design
+
+### `skills/ui-ux-pro-max`
+**Read before**: designing professional UI/UX with full design schemes
+**Covers**: color schemes, typography, layouts, design systems, UX best practices
+
+### `skills/web-artifacts-builder`
+**Read before**: building complex modern web apps with React, Tailwind, Shadcn/ui
+**Covers**: artifact patterns, component libraries, bundling, deployment
+
+### `skills/theme-factory`
+**Read before**: generating matching themes for documents, slides, HTML
+**Covers**: theme generation, color harmony, design token systems
+
+### `skills/brand-guidelines`
+**Read before**: applying Anthropic's official brand design specifications
+**Covers**: brand colors, typography, visual identity
+
+### `skills/composition-patterns`
+**Read before**: building scalable React component libraries
+**Covers**: compound components, state management, render props, context patterns
+
+### `skills/react-best-practices`
+**Read before**: React/Next.js performance optimization
+**Covers**: memoization, rendering optimization, bundle splitting, server components
+
+### Development & Engineering
+
+### `skills/memory-systems`
+**Read before**: building long-term memory and entity tracking systems
+**Covers**: knowledge graphs, vector storage, retrieval patterns
+
+### `skills/tool-design`
+**Read before**: designing efficient agent tool interfaces and MCP protocols
+**Covers**: tool schemas, error handling, tool composition
+
+### `skills/project-development`
+**Read before**: full lifecycle LLM project design
+**Covers**: task-model matching, pipeline architecture, evaluation
+
+### `skills/evaluation`
+**Read before**: establishing agent performance evaluation systems
+**Covers**: metrics, quality gates, testing frameworks
+
+### `skills/test-driven-development`
+**Read before**: writing tests before implementation
+**Covers**: TDD patterns, test structure, mocking
+
+### `skills/systematic-debugging`
+**Read before**: resolving bugs, test failures, or abnormal behaviors
+**Covers**: debugging strategies, root cause analysis, defensive coding
+
+### Planning & Workflow
+
+### `skills/brainstorming`
+**Read before**: any new task to clarify requirements and design
+**Covers**: brainstorming techniques, idea generation, planning
+
+### `skills/writing-plans`
+**Read before**: writing detailed execution plans for complex tasks
+**Covers**: plan structure, milestones, task breakdown
+
+### `skills/dispatching-parallel-agents`
+**Read before**: coordinating multiple sub-agents for parallel tasks
+**Covers**: agent dispatch, parallel execution, result aggregation
+
+### `skills/multi-agent-patterns`
+**Read before**: designing advanced multi-agent collaboration
+**Covers**: supervisor pattern, swarm orchestration, agent communication
+
+### Core Cognition & Architecture
+
+### `skills/context-fundamentals`
+**Read before**: understanding context windows and attention mechanisms
+**Covers**: token limits, attention patterns, context management
+
+### `skills/filesystem-context`
+**Read before**: using filesystem for dynamic context offloading
+**Covers**: file-based memory, context persistence, retrieval
 
 ---
 
