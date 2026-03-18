@@ -21,9 +21,9 @@ After every completed sprint task:
 
 ```
 Phase    : 1 — Core Daemon
-Sprint   : 1.7 — Dashboard UI
+Sprint   : 1.8 — Entry Point
 Status   : 🔴 Not Started
-Next task: Create public/index.html with dark theme dashboard
+Next task: Create src/index.ts with .env parsing and banner
 ```
 
 ---
@@ -83,12 +83,12 @@ Next task: Create public/index.html with dark theme dashboard
 - [x] Export `startServer()` and `broadcast()`
 
 ### Sprint 1.7 — Dashboard UI (`public/index.html`)
-- [ ] Dark theme, professional design
-- [ ] WebSocket with auto-reconnect
-- [ ] Streaming token display
-- [ ] Tool call activity shown inline
-- [ ] Connection status indicator
-- [ ] Session persistence via sessionStorage
+- [x] Dark theme, professional design
+- [x] WebSocket with auto-reconnect
+- [x] Streaming token display
+- [x] Tool call activity shown inline
+- [x] Connection status indicator
+- [x] Session persistence via sessionStorage
 
 ### Sprint 1.8 — Entry Point (`src/index.ts`)
 - [ ] Parse `.env` manually (no library)
@@ -178,6 +178,7 @@ Next task: Create public/index.html with dark theme dashboard
 | 2026-03-18 | 1.4 | Tool Registry | a5d7107 |
 | 2026-03-18 | 1.5 | Agent Loop | 2bd86b6 |
 | 2026-03-18 | 1.6 | WebSocket Server | 61f1a3d |
+| 2026-03-18 | 1.7 | Dashboard UI | [pending] |
 | — | — | — | — |
 
 *(AI fills this in as tasks complete)*

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J.A.R.V.I.S</title>
+  <style>
+    :root {
+      --bg-primary: #0d1117;
+      --bg-secondary: #161b22;
+      --bg-tertiary: #21262d;
+      --text-primary: #c9d1d9;
+      --text-secondary: #8b949e;
+      --accent: #58a6ff;
+      --success: #3fb950;
+      --error: #f85149;
+      --border: #30363d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+    }
+
+    .status.connected .status-dot {
+      background: var(--success);
+    }
+
+    .status.disconnected .status-dot {
+      background: var(--error);
+    }
+
+    .status.connecting .status-dot {
+      background: #f0883e;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    #messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 12px 16px;
+      border-radius: 8px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .message.user {
+      align-self: flex-end;
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .message.assistant {
+      align-self: flex-start;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+    }
+
+    .message .role {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .tool-call {
+      align-self: flex-start;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 4px 0;
+    }
+
+    .tool-call .tool-name {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .tool-call .tool-args {
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+
+    .tool-result {
+      align-self: flex-start;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      color: var(--text-secondary);
+      max-width: 100%;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+      margin: 4px 0 4px 20px;
+    }
+
+    .thinking {
+      align-self: flex-start;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+    }
+
+    .thinking-dots {
+      display: flex;
+      gap: 4px;
+    }
+
+    .thinking-dots span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: bounce 1.4s infinite ease-in-out both;
+    }
+
+    .thinking-dots span:nth-child(1) { animation-delay: -0.32s; }
+    .thinking-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes bounce {
+      0%, 80%, 100% { transform: scale(0); }
+      40% { transform: scale(1); }
+    }
+
+    #input-area {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      gap: 12px;
+    }
+
+    #input {
+      flex: 1;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 14px;
+      resize: none;
+      min-height: 44px;
+      max-height: 120px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    #input:focus {
+      border-color: var(--accent);
+    }
+
+    #input::placeholder {
+      color: var(--text-secondary);
+    }
+
+    #send {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+
+    #send:hover {
+      opacity: 0.9;
+    }
+
+    #send:active {
+      transform: scale(0.98);
+    }
+
+    #send:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .error {
+      color: var(--error);
+      background: rgba(248, 81, 73, 0.1);
+      border-color: var(--error);
+    }
+
+    #input-area {
+      position: sticky;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>J.A.R.V.I.S</h1>
+    <div class="status disconnected" id="status">
+      <span class="status-dot"></span>
+      <span id="status-text">Disconnected</span>
+    </div>
+  </header>
+  
+  <div id="messages"></div>
+  
+  <div id="input-area">
+    <textarea id="input" placeholder="Ask JARVIS anything..." rows="1"></textarea>
+    <button id="send">Send</button>
+  </div>
+  
+  <script>
+    const sessionId = sessionStorage.getItem('sessionId') || 
+      Math.random().toString(36).substring(2) + Date.now().toString(36);
+    sessionStorage.setItem('sessionId', sessionId);
+
+    let ws;
+    let reconnectAttempts = 0;
+    const maxReconnectAttempts = 10;
+    let isConnected = false;
+
+    const messagesDiv = document.getElementById('messages');
+    const input = document.getElementById('input');
+    const sendBtn = document.getElementById('send');
+    const statusEl = document.getElementById('status');
+    const statusText = document.getElementById('status-text');
+
+    function connect() {
+      updateStatus('connecting');
+      
+      ws = new WebSocket(`ws://localhost:3142/ws?session=${sessionId}`);
+      
+      ws.onopen = () => {
+        console.log('Connected to JARVIS');
+        updateStatus('connected');
+        reconnectAttempts = 0;
+        isConnected = true;
+      };
+      
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        handleMessage(data);
+      };
+      
+      ws.onclose = () => {
+        console.log('Disconnected from JARVIS');
+        updateStatus('disconnected');
+        isConnected = false;
+        
+        if (reconnectAttempts < maxReconnectAttempts) {
+          const delay = Math.min(1000 * Math.pow(2, reconnectAttempts), 30000);
+          console.log(`Reconnecting in ${delay}ms...`);
+          setTimeout(connect, delay);
+          reconnectAttempts++;
+        }
+      };
+      
+      ws.onerror = (error) => {
+        console.error('WebSocket error:', error);
+      };
+    }
+
+    function updateStatus(status) {
+      statusEl.className = `status ${status}`;
+      statusText.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+    }
+
+    function handleMessage(data) {
+      switch (data.type) {
+        case 'connected':
+          console.log('Session:', data.sessionId);
+          break;
+          
+        case 'thinking':
+          showThinking();
+          break;
+          
+        case 'token':
+          appendToken(data.token);
+          break;
+          
+        case 'stream_end':
+          hideThinking();
+          break;
+          
+        case 'tool_call':
+          showToolCall(data.tool, data.args);
+          break;
+          
+        case 'tool_result':
+          showToolResult(data.tool, data.result);
+          break;
+          
+        case 'error':
+          showError(data.message);
+          break;
+          
+        case 'pong':
+          console.log('Pong:', data.ts);
+          break;
+      }
+    }
+
+    function showThinking() {
+      const thinking = document.createElement('div');
+      thinking.className = 'thinking';
+      thinking.id = 'thinking';
+      thinking.innerHTML = `
+        <div class="thinking-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <span>JARVIS is thinking...</span>
+      `;
+      messagesDiv.appendChild(thinking);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function hideThinking() {
+      const thinking = document.getElementById('thinking');
+      if (thinking) {
+        thinking.remove();
+      }
+      sendBtn.disabled = false;
+      input.disabled = false;
+      input.focus();
+    }
+
+    function appendToken(token) {
+      let assistantMsg = document.querySelector('.message.assistant:last-child');
+      
+      if (!assistantMsg) {
+        assistantMsg = document.createElement('div');
+        assistantMsg.className = 'message assistant';
+        assistantMsg.innerHTML = '<div class="role">JARVIS</div><div class="content"></div>';
+        messagesDiv.appendChild(assistantMsg);
+      }
+      
+      const content = assistantMsg.querySelector('.content');
+      content.textContent += token;
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function showToolCall(tool, args) {
+      const toolDiv = document.createElement('div');
+      toolDiv.className = 'tool-call';
+      const argsStr = JSON.stringify(args).slice(0, 100);
+      toolDiv.innerHTML = `
+        <span class="tool-name">${tool}</span>
+        <span class="tool-args">${argsStr}${JSON.stringify(args).length > 100 ? '...' : ''}</span>
+      `;
+      messagesDiv.appendChild(toolDiv);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function showToolResult(tool, result) {
+      try {
+        const parsed = JSON.parse(result);
+        const resultDiv = document.createElement('div');
+        resultDiv.className = 'tool-result';
+        
+        let displayText = '';
+        if (parsed.success !== undefined) {
+          displayText = parsed.success ? JSON.stringify(parsed, null, 2) : parsed.error || 'Failed';
+        } else if (parsed.error) {
+          displayText = parsed.error;
+        } else {
+          displayText = JSON.stringify(parsed, null, 2);
+        }
+        
+        resultDiv.textContent = displayText.slice(0, 2000);
+        messagesDiv.appendChild(resultDiv);
+      } catch {
+        const resultDiv = document.createElement('div');
+        resultDiv.className = 'tool-result';
+        resultDiv.textContent = result.slice(0, 2000);
+        messagesDiv.appendChild(resultDiv);
+      }
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function addMessage(role, content) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `message ${role}`;
+      msgDiv.innerHTML = `<div class="role">${role === 'user' ? 'You' : 'JARVIS'}</div><div class="content">${content}</div>`;
+      messagesDiv.appendChild(msgDiv);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function showError(message) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = 'message assistant error';
+      msgDiv.innerHTML = `<div class="role">Error</div><div class="content">${message}</div>`;
+      messagesDiv.appendChild(msgDiv);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function sendMessage() {
+      const message = input.value.trim();
+      
+      if (!message || !isConnected) return;
+      
+      addMessage('user', message);
+      input.value = '';
+      
+      sendBtn.disabled = true;
+      input.disabled = true;
+      
+      ws.send(JSON.stringify({ type: 'chat', message }));
+    }
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    sendBtn.addEventListener('click', sendMessage);
+
+    input.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+    });
+
+    connect();
+  </script>
+</body>
+</html>
