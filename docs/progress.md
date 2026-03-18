@@ -21,9 +21,9 @@ After every completed sprint task:
 
 ```
 Phase    : 1 — Core Daemon
-Sprint   : 1.4 — Tool Registry
+Sprint   : 1.5 — Agent Loop
 Status   : 🔴 Not Started
-Next task: Implement ToolRegistry in src/tools/registry.ts
+Next task: Implement Agent.run() in src/core/agent.ts
 ```
 
 ---
@@ -56,15 +56,15 @@ Next task: Implement ToolRegistry in src/tools/registry.ts
 - [x] Implement `getStats()`
 
 ### Sprint 1.4 — Tool Registry (`src/tools/`)
-- [ ] Implement `ToolRegistry` class in `registry.ts`
-- [ ] Create `impl/web_search.ts`
-- [ ] Create `impl/remember.ts`
-- [ ] Create `impl/recall.ts`
-- [ ] Create `impl/datetime.ts`
-- [ ] Create `impl/run_command.ts` (with blocklist)
-- [ ] Create `impl/read_file.ts`
-- [ ] Create `impl/write_file.ts`
-- [ ] Register all 7 tools in `registry.ts`
+- [x] Implement `ToolRegistry` class in `registry.ts`
+- [x] Create `impl/web_search.ts`
+- [x] Create `impl/remember.ts`
+- [x] Create `impl/recall.ts`
+- [x] Create `impl/datetime.ts`
+- [x] Create `impl/run_command.ts` (with blocklist)
+- [x] Create `impl/read_file.ts`
+- [x] Create `impl/write_file.ts`
+- [x] Register all 7 tools in `registry.ts`
 
 ### Sprint 1.5 — Agent Loop (`src/core/agent.ts`)
 - [ ] Implement `Agent.run()` with 20-iteration loop
@@ -175,6 +175,7 @@ Next task: Implement ToolRegistry in src/tools/registry.ts
 | 2026-03-18 | 1.1 | Project Skeleton | 8ba4f9f |
 | 2026-03-18 | 1.2 | NIM Client | 2fe5815 |
 | 2026-03-18 | 1.3 | Memory Vault | 79d1425 |
+| 2026-03-18 | 1.4 | Tool Registry | [pending] |
 | — | — | — | — |
 
 *(AI fills this in as tasks complete)*
