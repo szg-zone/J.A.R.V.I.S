@@ -178,7 +178,7 @@ JARVIS is running at http://localhost:3142
 | 2026-03-18 | 1.5 | Agent Loop | 2bd86b6 |
 | 2026-03-18 | 1.6 | WebSocket Server | 61f1a3d |
 | 2026-03-18 | 1.7 | Dashboard UI | 2c85c3a |
-| 2026-03-18 | 1.8 | Entry Point | [pending] |
+| 2026-03-18 | 1.8 | Entry Point | 9a7b916 |
 | — | — | — | — |
 
 *(AI fills this in as tasks complete)*
