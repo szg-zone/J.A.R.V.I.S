@@ -18,9 +18,12 @@ class JarvisServer {
   start(port: number = 3142): Bun.Server {
     this.server = Bun.serve({
       port,
-      fetch: (req) => this.handleRequest(req),
+      fetch: (req, server) => this.handleRequest(req, server),
       websocket: {
-        open: (ws) => this.handleOpen(ws),
+        open: (ws) => {
+          const sessionId = (ws.data as { sessionId?: string })?.sessionId || 'default';
+          this.handleOpen(ws, sessionId);
+        },
         message: (ws, msg) => this.handleMessage(ws, msg),
         close: (ws, code, reason) => this.handleClose(ws, code, reason),
       }
@@ -33,7 +36,7 @@ class JarvisServer {
     return this.server;
   }
 
-  private handleRequest(req: Request): Response {
+  private handleRequest(req: Request, server: Bun.Server): Response {
     const url = new URL(req.url);
 
     if (url.pathname === '/') {
@@ -59,15 +62,18 @@ class JarvisServer {
       return this.handleChat(req);
     }
 
-    if (url.pathname.startsWith('/ws')) {
+    if (url.pathname.startsWith('/ws') || url.pathname === '/ws') {
       const sessionId = url.searchParams.get('session') || 'default';
-      const pair = new WebSocketPair();
-      this.handleOpen(pair[1], sessionId);
-
-      return new Response(null, {
-        status: 101,
-        webSocket: pair[1]
+      
+      const upgraded = server.upgrade(req, {
+        data: { sessionId }
       });
+
+      if (!upgraded) {
+        return new Response('WebSocket upgrade failed', { status: 500 });
+      }
+      
+      return; // WebSocket upgrade in progress
     }
 
     return new Response('Not Found', { status: 404 });

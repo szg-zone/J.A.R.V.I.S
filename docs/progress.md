@@ -21,9 +21,8 @@ After every completed sprint task:
 
 ```
 Phase    : 1 — Core Daemon
-Sprint   : 1.8 — Entry Point
-Status   : 🔴 Not Started
-Next task: Create src/index.ts with .env parsing and banner
+Status   : ✅ COMPLETE
+JARVIS is running at http://localhost:3142
 ```
 
 ---
@@ -91,10 +90,10 @@ Next task: Create src/index.ts with .env parsing and banner
 - [x] Session persistence via sessionStorage
 
 ### Sprint 1.8 — Entry Point (`src/index.ts`)
-- [ ] Parse `.env` manually (no library)
-- [ ] Validate `NVIDIA_API_KEY` — fail fast
-- [ ] Print startup banner
-- [ ] Handle SIGINT gracefully
+- [x] Parse `.env` manually (no library)
+- [x] Validate `NVIDIA_API_KEY` — fail fast
+- [x] Print startup banner
+- [x] Handle SIGINT gracefully
 
 **Phase 1 done when**: `bun run src/index.ts` starts, dashboard loads, can chat with streaming, tools work, memory accumulates.
 
@@ -179,6 +178,7 @@ Next task: Create src/index.ts with .env parsing and banner
 | 2026-03-18 | 1.5 | Agent Loop | 2bd86b6 |
 | 2026-03-18 | 1.6 | WebSocket Server | 61f1a3d |
 | 2026-03-18 | 1.7 | Dashboard UI | 2c85c3a |
+| 2026-03-18 | 1.8 | Entry Point | [pending] |
 | — | — | — | — |
 
 *(AI fills this in as tasks complete)*
