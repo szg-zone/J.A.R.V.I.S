@@ -21,9 +21,9 @@ After every completed sprint task:
 
 ```
 Phase    : 1 — Core Daemon
-Sprint   : 1.2 — NIM Client
+Sprint   : 1.3 — Memory Vault
 Status   : 🔴 Not Started
-Next task: Implement chat() and streamChat() in src/core/llm.ts
+Next task: Implement SQLite vault in src/memory/vault.ts
 ```
 
 ---
@@ -39,11 +39,11 @@ Next task: Implement chat() and streamChat() in src/core/llm.ts
 - [x] Connect GitHub repo and push initial commit
 
 ### Sprint 1.2 — NIM Client (`src/core/llm.ts`)
-- [ ] Implement `chat()` — non-streaming, tool calling
-- [ ] Implement `streamChat()` — SSE streaming
-- [ ] Add retry logic: 3 attempts, 1s/2s/4s backoff
-- [ ] Add 30-second AbortController timeout
-- [ ] Export all interfaces from `src/core/types.ts`
+- [x] Implement `chat()` — non-streaming, tool calling
+- [x] Implement `streamChat()` — SSE streaming
+- [x] Add retry logic: 3 attempts, 1s/2s/4s backoff
+- [x] Add 30-second AbortController timeout
+- [x] Export all interfaces from `src/core/types.ts`
 
 ### Sprint 1.3 — Memory Vault (`src/memory/vault.ts`)
 - [ ] Create `~/.jarvis-szg/` directory on first run
@@ -173,6 +173,7 @@ Next task: Implement chat() and streamChat() in src/core/llm.ts
 | Date | Sprint | Task | Commit |
 |------|--------|------|--------|
 | 2026-03-18 | 1.1 | Project Skeleton | 8ba4f9f |
+| 2026-03-18 | 1.2 | NIM Client | [pending] |
 | — | — | — | — |
 
 *(AI fills this in as tasks complete)*
