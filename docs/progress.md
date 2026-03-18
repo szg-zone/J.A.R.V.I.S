@@ -178,7 +178,7 @@ Next task: Create src/index.ts with .env parsing and banner
 | 2026-03-18 | 1.4 | Tool Registry | a5d7107 |
 | 2026-03-18 | 1.5 | Agent Loop | 2bd86b6 |
 | 2026-03-18 | 1.6 | WebSocket Server | 61f1a3d |
-| 2026-03-18 | 1.7 | Dashboard UI | [pending] |
+| 2026-03-18 | 1.7 | Dashboard UI | 2c85c3a |
 | — | — | — | — |
 
 *(AI fills this in as tasks complete)*
