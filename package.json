@@ -1,0 +1,14 @@
+{
+  "name": "jarvis-szg",
+  "version": "0.1.0",
+  "description": "J.A.R.V.I.S - SZG — Just A Rather Very Intelligent System",
+  "type": "module",
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "dev": "bun --watch src/index.ts",
+    "check": "bun run --check src/index.ts"
+  },
+  "dependencies": {
+    "bun-types": "^1.1.0"
+  }
+}
