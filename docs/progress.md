@@ -176,7 +176,7 @@ Next task: Implement Bun.serve() with WebSocket in src/server/server.ts
 | 2026-03-18 | 1.2 | NIM Client | 2fe5815 |
 | 2026-03-18 | 1.3 | Memory Vault | 79d1425 |
 | 2026-03-18 | 1.4 | Tool Registry | a5d7107 |
-| 2026-03-18 | 1.5 | Agent Loop | [pending] |
+| 2026-03-18 | 1.5 | Agent Loop | 2bd86b6 |
 | — | — | — | — |
 
 *(AI fills this in as tasks complete)*
