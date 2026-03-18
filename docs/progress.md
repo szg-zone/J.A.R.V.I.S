@@ -173,7 +173,7 @@ Next task: Implement SQLite vault in src/memory/vault.ts
 | Date | Sprint | Task | Commit |
 |------|--------|------|--------|
 | 2026-03-18 | 1.1 | Project Skeleton | 8ba4f9f |
-| 2026-03-18 | 1.2 | NIM Client | [pending] |
+| 2026-03-18 | 1.2 | NIM Client | 2fe5815 |
 | — | — | — | — |
 
 *(AI fills this in as tasks complete)*
