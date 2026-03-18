@@ -21,9 +21,9 @@ After every completed sprint task:
 
 ```
 Phase    : 1 — Core Daemon
-Sprint   : 1.6 — WebSocket Server
+Sprint   : 1.7 — Dashboard UI
 Status   : 🔴 Not Started
-Next task: Implement Bun.serve() with WebSocket in src/server/server.ts
+Next task: Create public/index.html with dark theme dashboard
 ```
 
 ---
@@ -75,12 +75,12 @@ Next task: Implement Bun.serve() with WebSocket in src/server/server.ts
 - [x] Export `agent` singleton
 
 ### Sprint 1.6 — WebSocket Server (`src/server/server.ts`)
-- [ ] `Bun.serve()` with WebSocket upgrade at `/ws`
-- [ ] Send `thinking` event immediately on message
-- [ ] Stream tokens via `token` events
-- [ ] Send `stream_end` with full response
-- [ ] REST routes: `/`, `/api/chat`, `/api/status`, `/api/memory`
-- [ ] Export `startServer()` and `broadcast()`
+- [x] `Bun.serve()` with WebSocket upgrade at `/ws`
+- [x] Send `thinking` event immediately on message
+- [x] Stream tokens via `token` events
+- [x] Send `stream_end` with full response
+- [x] REST routes: `/`, `/api/chat`, `/api/status`, `/api/memory`
+- [x] Export `startServer()` and `broadcast()`
 
 ### Sprint 1.7 — Dashboard UI (`public/index.html`)
 - [ ] Dark theme, professional design
@@ -177,6 +177,7 @@ Next task: Implement Bun.serve() with WebSocket in src/server/server.ts
 | 2026-03-18 | 1.3 | Memory Vault | 79d1425 |
 | 2026-03-18 | 1.4 | Tool Registry | a5d7107 |
 | 2026-03-18 | 1.5 | Agent Loop | 2bd86b6 |
+| 2026-03-18 | 1.6 | WebSocket Server | [pending] |
 | — | — | — | — |
 
 *(AI fills this in as tasks complete)*
