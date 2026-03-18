@@ -21,9 +21,9 @@ After every completed sprint task:
 
 ```
 Phase    : 1 — Core Daemon
-Sprint   : 1.5 — Agent Loop
+Sprint   : 1.6 — WebSocket Server
 Status   : 🔴 Not Started
-Next task: Implement Agent.run() in src/core/agent.ts
+Next task: Implement Bun.serve() with WebSocket in src/server/server.ts
 ```
 
 ---
@@ -67,12 +67,12 @@ Next task: Implement Agent.run() in src/core/agent.ts
 - [x] Register all 7 tools in `registry.ts`
 
 ### Sprint 1.5 — Agent Loop (`src/core/agent.ts`)
-- [ ] Implement `Agent.run()` with 20-iteration loop
-- [ ] Load history + inject knowledge context
-- [ ] Execute tool calls → push results → continue
-- [ ] Stream response via `onToken` callback
-- [ ] Save messages + fire-and-forget extraction
-- [ ] Export `agent` singleton
+- [x] Implement `Agent.run()` with 20-iteration loop
+- [x] Load history + inject knowledge context
+- [x] Execute tool calls → push results → continue
+- [x] Stream response via `onToken` callback
+- [x] Save messages + fire-and-forget extraction
+- [x] Export `agent` singleton
 
 ### Sprint 1.6 — WebSocket Server (`src/server/server.ts`)
 - [ ] `Bun.serve()` with WebSocket upgrade at `/ws`
@@ -176,6 +176,7 @@ Next task: Implement Agent.run() in src/core/agent.ts
 | 2026-03-18 | 1.2 | NIM Client | 2fe5815 |
 | 2026-03-18 | 1.3 | Memory Vault | 79d1425 |
 | 2026-03-18 | 1.4 | Tool Registry | a5d7107 |
+| 2026-03-18 | 1.5 | Agent Loop | [pending] |
 | — | — | — | — |
 
 *(AI fills this in as tasks complete)*
