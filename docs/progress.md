@@ -20,9 +20,9 @@ After every completed sprint task:
 ## Current Status
 
 ```
-Phase    : 1 — Core Daemon
+Phase    : 2 — Voice Interface
+Sprint   : 2.1 — TTS
 Status   : ✅ COMPLETE
-JARVIS is running at http://localhost:3142
 ```
 
 ---
@@ -102,10 +102,10 @@ JARVIS is running at http://localhost:3142
 ## Phase 2 — Voice Interface
 
 ### Sprint 2.1 — TTS (`src/voice/tts.ts`)
-- [ ] `bun add edge-tts`
-- [ ] `synthesize(text)` → async generator of MP3 Buffers
-- [ ] Sentence splitting before synthesis
-- [ ] Server sends buffers as binary WebSocket frames
+- [x] `bun add edge-tts`
+- [x] `synthesize(text)` → async generator of MP3 Buffers
+- [x] Sentence splitting before synthesis
+- [x] Server sends buffers as binary WebSocket frames
 
 ### Sprint 2.2 — STT (`src/voice/stt.ts`)
 - [ ] `transcribe(buffer)` → `Promise<string>`
@@ -179,7 +179,7 @@ JARVIS is running at http://localhost:3142
 | 2026-03-18 | 1.6 | WebSocket Server | 61f1a3d |
 | 2026-03-18 | 1.7 | Dashboard UI | 2c85c3a |
 | 2026-03-18 | 1.8 | Entry Point | 9a7b916 |
-| — | — | — | — |
+| 2026-03-18 | 2.1 | TTS (edge-tts) | [pending] |
 
 *(AI fills this in as tasks complete)*
 

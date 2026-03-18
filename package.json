@@ -9,6 +9,7 @@
     "check": "bun run --check src/index.ts"
   },
   "dependencies": {
-    "bun-types": "^1.1.0"
+    "bun-types": "^1.1.0",
+    "edge-tts": "^1.0.1"
   }
 }
