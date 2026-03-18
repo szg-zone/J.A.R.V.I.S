@@ -21,9 +21,9 @@ After every completed sprint task:
 
 ```
 Phase    : 1 — Core Daemon
-Sprint   : 1.3 — Memory Vault
+Sprint   : 1.4 — Tool Registry
 Status   : 🔴 Not Started
-Next task: Implement SQLite vault in src/memory/vault.ts
+Next task: Implement ToolRegistry in src/tools/registry.ts
 ```
 
 ---
@@ -46,14 +46,14 @@ Next task: Implement SQLite vault in src/memory/vault.ts
 - [x] Export all interfaces from `src/core/types.ts`
 
 ### Sprint 1.3 — Memory Vault (`src/memory/vault.ts`)
-- [ ] Create `~/.jarvis-szg/` directory on first run
-- [ ] Initialize SQLite at `~/.jarvis-szg/jarvis.db`
-- [ ] Create `knowledge` + `knowledge_fts` tables
-- [ ] Create `conversations` table with index
-- [ ] Implement `store()`, `search()`, `buildContext()`
-- [ ] Implement `saveMessage()`, `loadHistory()`
-- [ ] Implement `extractAsync()` — fire-and-forget
-- [ ] Implement `getStats()`
+- [x] Create `~/.jarvis-szg/` directory on first run
+- [x] Initialize SQLite at `~/.jarvis-szg/jarvis.db`
+- [x] Create `knowledge` + `knowledge_fts` tables
+- [x] Create `conversations` table with index
+- [x] Implement `store()`, `search()`, `buildContext()`
+- [x] Implement `saveMessage()`, `loadHistory()`
+- [x] Implement `extractAsync()` — fire-and-forget
+- [x] Implement `getStats()`
 
 ### Sprint 1.4 — Tool Registry (`src/tools/`)
 - [ ] Implement `ToolRegistry` class in `registry.ts`
@@ -174,6 +174,7 @@ Next task: Implement SQLite vault in src/memory/vault.ts
 |------|--------|------|--------|
 | 2026-03-18 | 1.1 | Project Skeleton | 8ba4f9f |
 | 2026-03-18 | 1.2 | NIM Client | 2fe5815 |
+| 2026-03-18 | 1.3 | Memory Vault | [pending] |
 | — | — | — | — |
 
 *(AI fills this in as tasks complete)*
